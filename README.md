@@ -1,43 +1,61 @@
-1. Download
-https://www.mongodb.com/download-center/community
-2. Install/Configure/Startup
-https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
-3. Working with POJO
-https://mongodb.github.io/mongo-java-driver/3.6/driver/getting-started/quick-start-pojo/
-4. Mongo and Spring data
-https://spring.io/guides/gs/accessing-data-mongodb/
+<h2>Articles used in tutorial<h2>
+<ol>
+<li> Download <br>
+https://www.mongodb.com/download-center/community </li>
+<li> Install/Configure/Startup <br>
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/ </li>
+<li> Working with POJO <br>
+https://mongodb.github.io/mongo-java-driver/3.6/driver/getting-started/quick-start-pojo/ </li>
+<li> Mongo and Spring data <br>
+https://spring.io/guides/gs/accessing-data-mongodb/ </li>
+</ol>
 
-1. mongo installation path
-D:\mongodb-4.0.10
+<h2>How to use tutorial</h2>
+<ul>
+<li>To check how to work with mongo collection refer to ua.vlpo.custom.samples.Main</li>
+<li>To check how to work with mongo collection and get result serialized to custom POJO refer to ua.vlpo.custom.samples.SerializedMain</li>
+<li>Interested in spring data? Refer to ua.vlpo.MongoInteractionBootApplication</li>
+</ul>
 
-2. mongo start (single node)
+<h2>How to start mongo single instance or replica set</h2>
+<h5>Single instance</h5>
+<ul>
+<li>mongo installation path <br>
+D:\mongodb-4.0.10 </li>
+
+<li>mongo start (single node) <br>
 D:\mongodb-4.0.10\bin>mongod.exe --dbpath=D:\mongodb-4.0.10\data\db
+</ul>
 
-3. mongo start (replica set) - in separate consoles
-D:\mongodb-4.0.10\bin>
-mongod.exe --port 27017 --dbpath=D:\mongodb-4.0.10\data\db --replSet my-replica-set
-D:\mongodb-4.0.10\bin>
-mongod.exe --port 27018 --dbpath=D:\mongodb-4.0.10\data\db1 --replSet my-replica-set
-D:\mongodb-4.0.10\bin>
-mongod.exe --port 27019 --dbpath=D:\mongodb-4.0.10\data\db2 --replSet my-replica-set
+<h5>Replica set</h5>
+<ul>
+<li>mongo start (replica set) - in separate consoles <br>
+D:\mongodb-4.0.10\bin> <br>
+mongod.exe --port 27017 --dbpath=D:\mongodb-4.0.10\data\db --replSet my-replica-set <br>
+D:\mongodb-4.0.10\bin> <br>
+mongod.exe --port 27018 --dbpath=D:\mongodb-4.0.10\data\db1 --replSet my-replica-set <br>
+D:\mongodb-4.0.10\bin> <br>
+mongod.exe --port 27019 --dbpath=D:\mongodb-4.0.10\data\db2 --replSet my-replica-set  </li>
 
-Run (in separate console)
-D:\mongodb-4.0.10\bin>mongo.exe 
+<li>Run (in separate console) <br>
+D:\mongodb-4.0.10\bin>mongo.exe  </li>
 
-type (in each mongo.exe client)
-rs.initiate()
+<li>type (in mongo.exe client) <br>
+rs.initiate() <br>
+ <br>
+prompt will change to: <br>
+my-replica-set:PRIMARY>  </li>
 
-prompt will change to:
-my-replica-set:PRIMARY> 
+<li>To add members type: <br>
+my-replica-set:PRIMARY> rs.add("localhost:27018") <br>
+my-replica-set:PRIMARY> rs.add("localhost:27019") </li>
 
-To add members type:
-my-replica-set:PRIMARY> rs.add("localhost:27018")
-my-replica-set:PRIMARY> rs.add("localhost:27019")
+<li>to get replica set details type: <br>
+my-replica-set:PRIMARY> rs.status() </li>
 
-to get replica set details type:
-my-replica-set:PRIMARY> rs.status()
 
-Response which you will get after submitting command
+<li>Response which you will get after submitting command <br>
+<pre>
 {
         "set" : "my-replica-set",
         "date" : ISODate("2019-07-05T13:27:05.965Z"),
@@ -154,3 +172,5 @@ Response which you will get after submitting command
                 }
         }
 }
+</pre> </li>
+</ul>
